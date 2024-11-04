@@ -1,0 +1,36 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.2.11'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+}
+
+sourceCompatibility = '17'
+group 'net.daw.bhouse'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    jupiter = 'org.junit.jupiter'
+    boot = 'org.springframework.boot'
+    lombok = 'org.projectlombok'
+}
+
+dependencies {
+    implementation "$boot:spring-boot-starter-web"
+    compileOnly "$lombok:lombok:1.18.30"
+    annotationProcessor "$lombok:lombok:1.18.30"
+
+
+    testCompileOnly "$lombok:lombok:1.18.30"
+    testAnnotationProcessor "$lombok:lombok:1.18.30"
+    testImplementation "$jupiter:junit-jupiter-api:5.10.5"
+    testRuntimeOnly "$jupiter:junit-jupiter-engine:5.10.5"
+    testImplementation "$boot:spring-boot-starter-test"
+}
+
+test {
+    useJUnitPlatform()
+}
